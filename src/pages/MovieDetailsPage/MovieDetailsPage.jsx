@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { movieDetails } from '../../api.js';
 import styles from './MovieDetailsPage.module.css';
 import GoBackButton from '../../components/GoBackButton/GoBackButton.jsx';
@@ -7,6 +7,8 @@ import GoBackButton from '../../components/GoBackButton/GoBackButton.jsx';
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
+  const location = useLocation();
+  const prevLocation = useRef(location.state ?? '/');
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -22,7 +24,7 @@ const MovieDetailsPage = () => {
     <div className={styles.movieDetailsPage}>
       {movie ? (
         <>
-          <GoBackButton />
+          <GoBackButton to={prevLocation.current}/>
           <div className={styles.movieDetailsContainer}>
             <img
               className={styles.moviePoster}
