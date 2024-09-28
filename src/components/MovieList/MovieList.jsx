@@ -1,8 +1,20 @@
-const MovieList = () => {
+import { Link } from 'react-router-dom';
+
+const MovieList = ({ list }) => {
   return (
-    <div>
-      MovieList
-    </div>
+    <ul>
+      {
+
+        list.map(item => {
+          return (
+            <li key={item.id}>
+              <Link to={`movies/${item.id}`}>{item.title}</Link>
+            </li>
+          )
+        })
+      }
+    </ul>
+
   );
 };
 
