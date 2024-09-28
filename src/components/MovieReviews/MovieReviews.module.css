@@ -1,0 +1,20 @@
+.reviewsSection {
+    margin-top: 20px;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.reviewItem {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.reviewItem p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.reviewItem strong {
+    font-size: 16px;
+}

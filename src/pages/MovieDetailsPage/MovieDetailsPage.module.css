@@ -46,3 +46,33 @@
     font-size: 18px;
     margin-top: 15px;
 }
+
+
+.additionalInfoSection {
+    margin-top: 20px;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.additionalInfoSection h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.infoList {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.infoList li {
+    margin-bottom: 10px;
+}
+
+.infoLink {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.infoLink:hover {
+    text-decoration: underline;
+}

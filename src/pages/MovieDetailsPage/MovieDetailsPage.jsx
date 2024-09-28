@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { movieDetails } from '../../api.js';
 import styles from './MovieDetailsPage.module.css';
+import GoBackButton from '../../components/GoBackButton/GoBackButton.jsx';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -15,19 +15,14 @@ const MovieDetailsPage = () => {
         setMovie(data);
       }
     };
-
     fetchMovieDetails();
   }, [movieId]);
-
-  const handleGoBack = () => {
-    navigate(-1);
-  };
 
   return (
     <div className={styles.movieDetailsPage}>
       {movie ? (
         <>
-          <button onClick={handleGoBack} className={styles.goBackBtn}>← Go back</button>
+          <GoBackButton />
           <div className={styles.movieDetailsContainer}>
             <img
               className={styles.moviePoster}
@@ -43,6 +38,18 @@ const MovieDetailsPage = () => {
               <p>{movie.genres.map((genre) => genre.name).join(' ')}</p>
             </div>
           </div>
+          <div className={styles.additionalInfoSection}>
+            <h2>Additional information</h2>
+            <ul className={styles.infoList}>
+              <li>
+                <Link to="cast" className={styles.infoLink}>Cast</Link>
+              </li>
+              <li>
+                <Link to="reviews" className={styles.infoLink}>Reviews</Link>
+              </li>
+            </ul>
+          </div>
+          <Outlet />
         </>
       ) : (
         <p>Loading...</p>
